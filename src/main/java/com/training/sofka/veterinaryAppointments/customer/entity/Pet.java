@@ -2,7 +2,7 @@ package com.training.sofka.veterinaryAppointments.customer.entity;
 
 import co.com.sofka.domain.generic.Entity;
 import com.training.sofka.veterinaryAppointments.customer.value.Age;
-import com.training.sofka.veterinaryAppointments.customer.value.AnimalType;
+import com.training.sofka.veterinaryAppointments.customer.value.PetType;
 import com.training.sofka.veterinaryAppointments.customer.value.PetID;
 import com.training.sofka.veterinaryAppointments.customer.value.State;
 
@@ -10,13 +10,13 @@ import java.util.Objects;
 
 public class Pet extends Entity<PetID> {
 
-    private final AnimalType animalType;
+    private final PetType petType;
     private  Age age;
     private  State state;
 
-    public Pet(PetID petID, AnimalType animalType, Age age, State state) {
+    public Pet(PetID petID, PetType petType, Age age, State state) {
         super(petID);
-        this.animalType = animalType;
+        this.petType = petType;
         this.age = age;
         this.state = state;
     }
@@ -29,8 +29,8 @@ public class Pet extends Entity<PetID> {
         this.age = Objects.requireNonNull(age);
     }
 
-    public AnimalType animalType() {
-        return animalType;
+    public PetType animalType() {
+        return petType;
     }
 
     public Age age() {

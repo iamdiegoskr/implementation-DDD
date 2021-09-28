@@ -7,14 +7,14 @@ public class AddNewPet implements Command {
 
     private final CustomerID customerID;
     private final PetID petID;
-    private final AnimalType animalType;
+    private final PetType petType;
     private final Age age;
     private final State state;
 
-    public AddNewPet(CustomerID customerID,PetID petID, AnimalType animalType, Age age, State state) {
+    public AddNewPet(CustomerID customerID, PetID petID, PetType petType, Age age, State state) {
         this.customerID = customerID;
         this.petID = petID;
-        this.animalType = animalType;
+        this.petType = petType;
         this.age = age;
         this.state = state;
     }
@@ -27,8 +27,8 @@ public class AddNewPet implements Command {
         return petID;
     }
 
-    public AnimalType getAnimalType() {
-        return animalType;
+    public PetType getAnimalType() {
+        return petType;
     }
 
     public Age getAge() {

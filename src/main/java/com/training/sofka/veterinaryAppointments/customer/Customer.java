@@ -49,12 +49,12 @@ public class Customer extends AggregateEvent<CustomerID> {
         appendChange(new UpdatedEmail(email)).apply();
     }
 
-    public void addNewPet(PetID petID, AnimalType animalType, Age age, State state){
+    public void addNewPet(PetID petID, PetType petType, Age age, State state){
         Objects.requireNonNull(petID);
-        Objects.requireNonNull(animalType);
+        Objects.requireNonNull(petType);
         Objects.requireNonNull(age);
         Objects.requireNonNull(state);
-        appendChange(new AddedPet(petID,animalType,age,state)).apply();
+        appendChange(new AddedPet(petID, petType,age,state)).apply();
     }
 
     public void updateStatusPet(PetID petID, State state){
