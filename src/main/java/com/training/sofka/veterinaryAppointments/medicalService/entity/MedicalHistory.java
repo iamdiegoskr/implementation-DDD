@@ -20,7 +20,7 @@ public class MedicalHistory extends Entity<MedicalHistoryIdentity> {
         this.report = Objects.requireNonNull(report);
     }
 
-    public MedicReport getReport() {
+    public MedicReport report() {
         return report;
     }
 }
