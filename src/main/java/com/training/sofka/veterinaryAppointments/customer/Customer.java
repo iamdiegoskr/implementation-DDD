@@ -1,6 +1,7 @@
 package com.training.sofka.veterinaryAppointments.customer;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import com.training.sofka.veterinaryAppointments.customer.entity.Pet;
 import com.training.sofka.veterinaryAppointments.customer.event.*;
 import com.training.sofka.veterinaryAppointments.customer.value.*;
@@ -9,6 +10,7 @@ import com.training.sofka.veterinaryAppointments.shared.value.Email;
 import com.training.sofka.veterinaryAppointments.shared.value.Name;
 import com.training.sofka.veterinaryAppointments.shared.value.Telephone;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -29,6 +31,12 @@ public class Customer extends AggregateEvent<CustomerID> {
     private Customer(CustomerID customerID){
         super(customerID);
         subscribe(new CustomerChange(this));
+    }
+
+    public static Customer from(CustomerID customerID, List<DomainEvent> events){
+        var customer = new Customer(customerID);
+        events.forEach(customer::applyEvent);
+        return customer;
     }
 
     public void updateName(Name name){
@@ -53,6 +61,13 @@ public class Customer extends AggregateEvent<CustomerID> {
         Objects.requireNonNull(petID);
         Objects.requireNonNull(state);
         appendChange(new UpdatedPetStatus(petID,state)).apply();
+    }
+
+    public void updateAgePet(PetID petID, Age age){
+        Objects.requireNonNull(petID);
+        Objects.requireNonNull(age);
+        appendChange(new UpdatedPetAge(petID,age));
+        appendChange(new UpdatedPetAge(petID,age));
     }
 
     public Optional<Pet> getPetById(PetID petID){
