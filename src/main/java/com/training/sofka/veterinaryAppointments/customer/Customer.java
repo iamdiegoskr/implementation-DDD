@@ -70,7 +70,7 @@ public class Customer extends AggregateEvent<CustomerID> {
         appendChange(new UpdatedPetAge(petID,age));
     }
 
-    public Optional<Pet> getPetById(PetID petID){
+    protected Optional<Pet> getPetById(PetID petID){
         return pets()
                 .stream()
                 .filter(pet -> pet.identity().equals(petID))
