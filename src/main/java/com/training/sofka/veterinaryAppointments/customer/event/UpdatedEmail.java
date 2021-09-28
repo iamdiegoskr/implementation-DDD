@@ -1,7 +1,7 @@
 package com.training.sofka.veterinaryAppointments.customer.event;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import com.training.sofka.veterinaryAppointments.customer.value.Email;
+import com.training.sofka.veterinaryAppointments.shared.value.Email;
 
 public class UpdatedEmail extends DomainEvent {
 

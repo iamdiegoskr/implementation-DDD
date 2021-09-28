@@ -4,6 +4,10 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import com.training.sofka.veterinaryAppointments.customer.entity.Pet;
 import com.training.sofka.veterinaryAppointments.customer.event.*;
 import com.training.sofka.veterinaryAppointments.customer.value.*;
+import com.training.sofka.veterinaryAppointments.shared.value.Address;
+import com.training.sofka.veterinaryAppointments.shared.value.Email;
+import com.training.sofka.veterinaryAppointments.shared.value.Name;
+import com.training.sofka.veterinaryAppointments.shared.value.Telephone;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -14,11 +18,17 @@ public class Customer extends AggregateEvent<CustomerID> {
     protected Name name;
     protected Email email;
     protected Telephone telephone;
+    protected Address address;
     protected Set<Pet> pets;
 
-    public Customer(CustomerID customerID, Name name, Email email, Telephone telephone) {
+    public Customer(CustomerID customerID, Name name, Email email, Telephone telephone, Address address) {
         super(customerID);
-        appendChange(new AddedCustomer(name,email,telephone)).apply();
+        appendChange(new AddedCustomer(name,email,telephone, address)).apply();
+    }
+
+    private Customer(CustomerID customerID){
+        super(customerID);
+        subscribe(new CustomerChange(this));
     }
 
     public void updateName(Name name){

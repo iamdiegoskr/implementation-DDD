@@ -1,9 +1,7 @@
 package com.training.sofka.veterinaryAppointments.customer.event;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import com.training.sofka.veterinaryAppointments.customer.value.Name;
-
-import java.util.UUID;
+import com.training.sofka.veterinaryAppointments.shared.value.Name;
 
 public class NameChanged extends DomainEvent {
 

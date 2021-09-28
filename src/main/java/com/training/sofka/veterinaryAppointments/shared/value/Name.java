@@ -1,8 +1,9 @@
-package com.training.sofka.veterinaryAppointments.customer.value;
+package com.training.sofka.veterinaryAppointments.shared.value;
 
 import co.com.sofka.domain.generic.ValueObject;
 
-public class Email implements ValueObject<String> {
+public class Name implements ValueObject<String> {
+
     @Override
     public String value() {
         return null;

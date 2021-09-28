@@ -1,4 +1,4 @@
-package com.training.sofka.veterinaryAppointments.customer.value;
+package com.training.sofka.veterinaryAppointments.shared.value;
 
 import co.com.sofka.domain.generic.ValueObject;
 
