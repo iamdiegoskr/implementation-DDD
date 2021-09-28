@@ -48,23 +48,23 @@ public class Vet extends Entity<VetIdentity> {
         this.diagnosis = Objects.requireNonNull(diagnosis);
     }
 
-    public Name getName() {
+    public Name name() {
         return name;
     }
 
-    public Email getEmail() {
+    public Email email() {
         return email;
     }
 
-    public Specialization getSpecialization() {
+    public Specialization specialization() {
         return specialization;
     }
 
-    public ConsultingRoom getConsultingRoom() {
+    public ConsultingRoom consultingRoom() {
         return consultingRoom;
     }
 
-    public Diagnosis getDiagnosis() {
+    public Diagnosis diagnosis() {
         return diagnosis;
     }
 }
