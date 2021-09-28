@@ -13,12 +13,20 @@ public class Address implements ValueObject<Address.Props> {
         this.street = Objects.requireNonNull(street);
         this.city = Objects.requireNonNull(city);
 
-        if(this.street.isEmpty()){
+        if(this.street.isBlank()){
             throw new IllegalArgumentException("La direccion no puede estar vacia");
         }
 
-        if(this.city.isEmpty()){
+        if(this.city.isBlank()){
             throw new IllegalArgumentException("La ciudad no puede estar vacia");
+        }
+
+        if(this.street.length()>200){
+            throw new IllegalArgumentException("La direccion no puede contener mas de 200 caracteres");
+        }
+
+        if(this.city.length()>100){
+            throw new IllegalArgumentException("La ciudad no puede contener mas de 100 caracteres");
         }
     }
 
@@ -43,4 +51,16 @@ public class Address implements ValueObject<Address.Props> {
         String city();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(street, address.street) && Objects.equals(city, address.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(street, city);
+    }
 }
